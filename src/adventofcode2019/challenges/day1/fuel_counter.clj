@@ -1,5 +1,5 @@
-(ns adventofcode2019.challenges.day1.fuel-counter)
-
+(ns adventofcode2019.challenges.day1.fuel-counter
+  (:require [adventofcode2019.utils :as utils]))
 
 ;  --- Day 1: The Tyranny of the Rocket Equation ---
 ;
@@ -31,24 +31,6 @@
 ;  What is the sum of the fuel requirements for all of the modules on your spacecraft?
 ;
 ;  To begin, get your puzzle input.
-
-(defn file->vector-by-line
-  "filename path must come from root
-
-  e.g. src/adventofcode2019/challenges/day1/fuel-counter-input.txt"
-  [filename]
-  (-> (slurp filename)
-      clojure.string/split-lines))
-
-(defn ->int [x]
-  "Coerce input to int, or values within vector input to int
-
-  Minimal checking, if you want to throw the kitchen sink at this
-  equation, you'll need to make the cond more robust"
-  (cond
-    (vector? x) (map (fn [y] (Integer. y)) x)
-    :else (Integer. x)))
-
 (defn mass->fuel-required
   [mass]
   (-> (/ mass 3)
@@ -63,8 +45,8 @@
           mass-inputs))
 
 (defn file->total-fuel [input-filename]
-  (->> (file->vector-by-line input-filename)
-       ->int
+  (->> (utils/file->vector-by-line input-filename)
+       utils/->int
        total-fuel-required))
 
-(println "Total: " (file->total-fuel "src/adventofcode2019/challenges/day1/fuel-counter-input.txt"))
+(println "Total: " (file->total-fuel "day1/fuel-counter-input.txt"))
