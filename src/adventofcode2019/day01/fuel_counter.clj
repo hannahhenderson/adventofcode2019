@@ -1,4 +1,4 @@
-(ns adventofcode2019.challenges.day1.fuel-counter
+(ns adventofcode2019.day01.fuel-counter
   (:require [adventofcode2019.utils :as utils]))
 
 ;; PART 1: MODULE FUEL
@@ -22,7 +22,7 @@
        utils/->int
        fuel-for-modules))
 
-(println "Module fuel only: " (file->fuel-for-modules "day1/fuel-counter-input.txt"))
+(println "Module fuel only: " (file->fuel-for-modules "day01/fuel-counter-input.txt"))
 
 ;; PART 2: FUEL'S FUEL
 (defn mass->fuel-and-its-fuel
@@ -47,4 +47,4 @@
        utils/->int
        fuel-for-modules-and-fuel))
 
-(println "Fuel for module AND fuel: " (file->fuel-for-modules-and-fuel "day1/fuel-counter-input.txt"))
+(println "Fuel for module AND fuel: " (file->fuel-for-modules-and-fuel "day01/fuel-counter-input.txt"))

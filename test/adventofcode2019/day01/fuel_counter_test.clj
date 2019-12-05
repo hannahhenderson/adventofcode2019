@@ -1,6 +1,6 @@
-(ns adventofcode2019.day1.fuel-counter-test
+(ns adventofcode2019.day01.fuel-counter-test
   (:require [clojure.test :refer :all]
-            [adventofcode2019.challenges.day1.fuel-counter :as fc]))
+            [adventofcode2019.day01.fuel-counter :as fc]))
 
 (deftest mass->fuel-works
   (testing "provided examples"
