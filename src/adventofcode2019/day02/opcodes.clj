@@ -1,6 +1,7 @@
 (ns adventofcode2019.day02.opcodes
   (:require [adventofcode2019.utils :as utils]))
 
+;; PART 1: OPSCODE
 (defn update-list [pos integers fn-op]
   (let [n1-pos (get integers (+ 1 pos))
         n2-pos (get integers (+ 2 pos))
