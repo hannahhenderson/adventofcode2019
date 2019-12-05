@@ -1,5 +1,6 @@
 (ns adventofcode2019.utils
-  (require [clojure.java.io :as io]))
+  (require [clojure.java.io :as io]
+           [clojure.string :as str]))
 
 (defn file->vector-by-line
   "From root in `resources` folder
@@ -7,7 +8,7 @@
    e.g. day1/fuel-counter-input.txt"
   [filepath]
   (-> (slurp (io/resource filepath))
-      clojure.string/split-lines))
+      str/split-lines))
 
 (defn ->int [x]
   "Coerce input to int, or values within vector input to int
@@ -17,3 +18,8 @@
   (cond
     (vector? x) (map (fn [y] (Integer. y)) x)
     :else (Integer. x)))
+
+(defn file->comma-free-vector
+  [filepath]
+  (-> (slurp (io/resource filepath))
+      (str/split #",")))
