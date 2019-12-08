@@ -23,3 +23,9 @@
   [filepath]
   (-> (slurp (io/resource filepath))
       (str/split #",")))
+
+(defn file->vectors-of-directions
+  [filepath]
+  (->> (slurp (io/resource filepath))
+       str/split-lines
+       (map (fn [s] (str/split s #",")))))
