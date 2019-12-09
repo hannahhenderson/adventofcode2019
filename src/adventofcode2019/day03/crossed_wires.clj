@@ -52,15 +52,18 @@
         abs-y (max y (* -1 y))]
     (+ abs-x abs-y)))
 
+(defn overlaps [wire1-points wire2-points]
+  (-> (clojure.set/intersection (set wire1-points)
+                                (set wire2-points))
+      (disj [0 0])))
+
 (defn wire-paths [wire1 wire2]
   (let [wire1-points (path-points wire1)
         wire2-points (path-points wire2)
         ;; Exclude from overlaps:
         ;;   - central point where both wires start
         ;;   - when a wire crosses over itself
-        overlaps (-> (clojure.set/intersection (set wire1-points)
-                                               (set wire2-points))
-                     (disj [0 0]))]
+        overlaps (overlaps wire1-points wire2-points)]
     (->> overlaps
          vec
          (map manhattan-distance)
@@ -71,4 +74,5 @@
   (let [wire-directions (utils/file->vectors-of-directions filename)]
     (wire-paths (first wire-directions) (second wire-directions))))
 
-(println "result is: " (min-manhattan "day03/wire-inputs.txt"))
+; TODO: Uncomment me to get the answer -- I'm a poorly optimized bit of logic!
+; (println "result is: " (min-manhattan "day03/wire-inputs.txt"))
