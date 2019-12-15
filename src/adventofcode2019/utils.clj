@@ -29,3 +29,7 @@
   (->> (slurp (io/resource filepath))
        str/split-lines
        (map (fn [s] (str/split s #",")))))
+
+(defn prn-return [x]
+  (println x)
+  x)
